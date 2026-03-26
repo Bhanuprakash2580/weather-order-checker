@@ -1,0 +1,19 @@
+AI LOG
+
+1. Parallel Fetching:
+Prompt used:
+"How to run multiple API calls in parallel in Node.js"
+
+Learned to use Promise.all() to execute API calls concurrently.
+
+2. Error Handling:
+Prompt used:
+"How to handle API errors in Node.js using try catch"
+
+Used try-catch inside async function to prevent script crash when API fails.
+
+3. Message Generation:
+Prompt used:
+"Generate a professional apology message based on weather delay"
+
+Customized the message using template function in JavaScript.
