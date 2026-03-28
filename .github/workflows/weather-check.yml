@@ -1,0 +1,32 @@
+name: Weather check
+
+on:
+  schedule:
+    # Daily at 09:00 UTC — change cron as needed
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Process orders
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: node index.js
+
+      - name: Upload updated orders (optional artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: updated_orders
+          path: updated_orders.json
